@@ -1,0 +1,596 @@
+Group {
+name GM_Edge_Hussar
+tile_color 0xff5555ff
+selected true
+xpos 13448
+ypos -897
+addUserKnob {20 main l Main}
+addUserKnob {26 options l "<b><font color=#DF2111>Color</font><b>"}
+addUserKnob {4 type l "Screen Type" t "Pick color based on the background color." M {Blue Green "" "" ""}}
+type Green
+addUserKnob {41 value l Multiply t "Allows to adjust the color of the edge." T Multiply.value}
+addUserKnob {41 red l Exposure t "Allows to adjust the exposure of the edge." T Exposure1.red}
+addUserKnob {26 edge_matte l "<b><font color=#FFFFFF>Edges</font><b>"}
+addUserKnob {7 IN_mask l "Inside Mask" t "Adjust the size of the mask`s inside based on the `alpha` input. " R 0 100}
+IN_mask 25
+addUserKnob {41 size_1 l "Inside Blur" t "Adjust the size of the inside mask`s blur based on the `alpha` input. " T IN_Blur.size}
+addUserKnob {7 OUT_mask l "Outside Mask" t "Adjust the size of the mask`s outside based on the `alpha` input. " R 0 -100}
+OUT_mask -54
+addUserKnob {41 size_3 l "Outside Blur" t "Adjust the size of the outside mask`s blur based on the `alpha` input. " T OUT_Blur.size}
+addUserKnob {26 mask l "<b><font color=#298B00>Mask</font><b>"}
+addUserKnob {6 CropOutput l "Crop Output" +STARTLINE}
+CropOutput true
+addUserKnob {41 disable_1 l "Mask Ignore" t "Allows you to disable what comes in on the `mask` input. " T ChannelMerge_Mult.disable}
+addUserKnob {7 MIX l Mix t "Allows you to change the value of Mix."}
+MIX 1
+addUserKnob {26 line l <b></font><b>}
+addUserKnob {26 ""}
+addUserKnob {22 tuts l Tutorial t "Have a look at tutorial. " -STARTLINE T "import os\nimport sys\n\ntry:\n    import subprocess\n    def _run(cmd, shell, wait):\n        opener = subprocess.Popen(cmd, shell=shell)\n        if wait:\n            opener.wait()\n        return opener.pid\nexcept ImportError:\n    import popen2\n    def _run(cmd, shell, wait):\n        opener = popen2.Popen3(cmd)\n        if wait:\n            opener.wait()\n        return opener.pid\n\ndef _open(url, wait=0):\n    if sys.platform == \"darwin\":\n        cmd = \[\"open\", url]\n    elif hasattr(os, \"startfile\"):\n        return os.startfile(url)\n    elif os.environ.has_key(\"KDE_FULL_SESSION\") or os.environ.has_key(\"KDE_MULTIHEAD\") or \\\n        os.environ.has_key(\"GNOME_DESKTOP_SESSION_ID\") or os.environ.has_key(\"GNOME_KEYRING_SOCKET\"):\n        cmd = \[\"xdg-open\", url]\n    else:\n        raise OSError, \"Desktop not supported.\"\n\n    return _run(cmd, 0, wait)\n\n_open('www.gatimedia.co.uk/edge-hussar')\n"}
+addUserKnob {26 ""}
+addUserKnob {26 TEXT l "" +STARTLINE T "<font color=#808080 size=\"5\" >1.01 Beta version</font>"}
+addUserKnob {26 HeadlineB l "" +STARTLINE T "<font color=#808080 size=\"2\">GM_Edge Hussar© by Attila Gasparetz</font>"}
+addUserKnob {20 info n 1}
+info 0
+addUserKnob {26 jm l "" +STARTLINE T "Use Edge Hussar after Additive Keyer to fix contaminated edges by the BG."}
+addUserKnob {20 endGroup_1 l endGroup n -1}
+addUserKnob {20 ranges l Ranges}
+addUserKnob {26 color_adv l "<b><font color=#DF2111>Color by ranges</font><b>"}
+addUserKnob {41 value_3 l Highlight T HIGH_Multiply.value}
+addUserKnob {41 value_1 l Midtone T MID_Multiply.value}
+addUserKnob {41 value_2 l Shadow T LOW_Multiply.value}
+addUserKnob {26 ""}
+addUserKnob {26 Exp_adv l "<b><font color=#FFFFFF>Exposure by ranges</font><b>"}
+addUserKnob {41 red_1 l Highlight T Exposure_HIGH.red}
+addUserKnob {41 red_2 l Midtone T Exposure_MID.red}
+addUserKnob {41 red_3 l Shadow T Exposure_SHAD.red}
+addUserKnob {26 Blur_size l "<b><font color=#298B00>Range Blur</font><b>"}
+addUserKnob {41 size T Blur_Edge_Hussar.size}
+addUserKnob {26 ""}
+addUserKnob {20 Ranges t "Allows you to modify the ranges to adjust the tones separately." n 2}
+addUserKnob {41 range l "Highlight range" t "Allows you to adjust the range of the `highlight`." T HIGHLIGHT.range}
+addUserKnob {41 range_1 l "Midtone range" t "Allows you to adjust the range of the `midtone`." T MIDTONE.range}
+addUserKnob {41 range_2 l "Shadow range" t "Allows you to adjust the range of the `shadow`." T SHADOW.range}
+addUserKnob {20 endGroup n -1}
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode1
+ tile_color 0xa9a9a9ff
+ label "<center> OUT"
+ note_font_size 42
+ xpos 20
+ ypos 2110
+ bdwidth 1500
+ bdheight 100
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode2
+ tile_color 0x7171c600
+ label <center>Ranges
+ note_font_size 42
+ xpos 1600
+ ypos 52
+ bdwidth 321
+ bdheight 808
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode3
+ tile_color 0xa9a9a9ff
+ label "<center> IN"
+ note_font_size 42
+ xpos 20
+ ypos -362
+ bdwidth 1500
+ bdheight 100
+}
+Input {
+ inputs 0
+ name plate
+ xpos 70
+ ypos -298
+}
+Dot {
+ name Dot1
+ xpos 104
+ ypos 138
+}
+set Nae815dc0 [stack 0]
+Dot {
+ name Dot2
+ xpos 544
+ ypos 138
+}
+set Nae81a600 [stack 0]
+Dot {
+ name Dot21
+ xpos 1754
+ ypos 138
+}
+set Nae81ef00 [stack 0]
+Keyer {
+ operation "luminance key"
+ range {0 0 0 0.1}
+ name SHADOW
+ xpos 1830
+ ypos 416
+}
+Clamp {
+ name Clamp8
+ xpos 1830
+ ypos 608
+}
+set C46ad6160 [stack 0]
+Blur {
+ size 2
+ name Blur_Edge_Hussar
+ xpos 1830
+ ypos 824
+}
+set C46ae4010 [stack 0]
+Input {
+ inputs 0
+ name mask
+ xpos 950
+ ypos -298
+ number 2
+ addUserKnob {20 User}
+ addUserKnob {6 connected +STARTLINE}
+}
+Clamp {
+ name Clamp1
+ xpos 950
+ ypos -40
+}
+Input {
+ inputs 0
+ name alpha
+ xpos 1280
+ ypos -298
+ number 1
+}
+Clamp {
+ name Clamp2
+ xpos 1280
+ ypos -40
+}
+Dot {
+ name Dot365
+ xpos 1314
+ ypos 258
+}
+set N46a31e50 [stack 0]
+Dot {
+ name Dot366
+ xpos 1204
+ ypos 258
+}
+FilterErode {
+ size {{parent.IN_mask}}
+ name IN_FilterErode
+ tile_color 0x6aff55ff
+ note_font "Bitstream Vera Sans Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold"
+ note_font_size 12
+ xpos 1170
+ ypos 295
+}
+Blur {
+ channels alpha
+ size 5
+ name IN_Blur
+ tile_color 0x6aff55ff
+ xpos 1170
+ ypos 368
+}
+Dot {
+ name Dot367
+ xpos 1204
+ ypos 426
+}
+push $N46a31e50
+Dot {
+ name Dot368
+ xpos 1424
+ ypos 258
+}
+FilterErode {
+ size {{parent.OUT_mask}}
+ name OUT_FilterErode
+ tile_color 0xff5594ff
+ note_font "Bitstream Vera Sans Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold"
+ note_font_size 12
+ xpos 1390
+ ypos 295
+}
+Blur {
+ channels alpha
+ size 50
+ name OUT_Blur
+ tile_color 0xff5594ff
+ xpos 1390
+ ypos 368
+}
+Dot {
+ name Dot369
+ xpos 1424
+ ypos 426
+}
+ChannelMerge {
+ inputs 2
+ operation xor
+ name ChannelMerge_Xor
+ xpos 1280
+ ypos 410
+}
+Dot {
+ name Dot370
+ xpos 1314
+ ypos 570
+}
+ChannelMerge {
+ inputs 2
+ operation multiply
+ name ChannelMerge_Mult
+ label "\[value operation]"
+ xpos 950
+ ypos 548
+ disable true
+}
+set N407b88a0 [stack 0]
+Dot {
+ name Dot18
+ xpos 984
+ ypos 618
+}
+set N407c4d60 [stack 0]
+Dot {
+ name Dot19
+ xpos 1094
+ ypos 618
+}
+set N407c97c0 [stack 0]
+Dot {
+ name Dot20
+ xpos 1204
+ ypos 618
+}
+ChannelMerge {
+ inputs 2
+ operation multiply
+ name LOW_CH
+ label "LOW\n\[value operation]"
+ xpos 1170
+ ypos 806
+}
+set N407d2730 [stack 0]
+Dot {
+ name Dot11
+ xpos 1204
+ ypos 1818
+}
+push $Nae81ef00
+Keyer {
+ operation "luminance key"
+ range {0 0.1 0.5 1}
+ name MIDTONE
+ xpos 1720
+ ypos 344
+}
+clone $C46ad6160 {
+ xpos 1720
+ ypos 536
+ selected false
+}
+clone $C46ae4010 {
+ xpos 1720
+ ypos 752
+ selected false
+}
+push $N407c97c0
+ChannelMerge {
+ inputs 2
+ operation multiply
+ name MID_CH
+ label "MID\n\[value operation]"
+ xpos 1060
+ ypos 734
+}
+set N40688de0 [stack 0]
+Dot {
+ name Dot13
+ xpos 1094
+ ypos 1770
+}
+push $Nae81ef00
+Keyer {
+ operation "luminance key"
+ range {0.5 1 50 50}
+ name HIGHLIGHT
+ xpos 1610
+ ypos 272
+}
+clone $C46ad6160 {
+ xpos 1610
+ ypos 464
+ selected false
+}
+clone $C46ae4010 {
+ xpos 1610
+ ypos 680
+ selected false
+}
+push $N407c4d60
+ChannelMerge {
+ inputs 2
+ operation multiply
+ name HIGH_CH
+ label "HIGH\n\[value operation]"
+ xpos 950
+ ypos 662
+}
+set N406bec30 [stack 0]
+Dot {
+ name Dot12
+ xpos 984
+ ypos 1722
+}
+push $N407b88a0
+Dot {
+ name Dot5
+ xpos 874
+ ypos 570
+}
+set N406cf6b0 [stack 0]
+Dot {
+ name Dot17
+ xpos 874
+ ypos 1146
+}
+set N406d42d0 [stack 0]
+Dot {
+ name Dot9
+ xpos 874
+ ypos 1362
+}
+set N406d88a0 [stack 0]
+Dot {
+ name Dot7
+ xpos 874
+ ypos 1482
+}
+set N406dd150 [stack 0]
+Dot {
+ name Dot8
+ xpos 874
+ ypos 1626
+}
+push $Nae815dc0
+Dot {
+ name Dot3
+ xpos -116
+ ypos 138
+}
+Dot {
+ name Dot4
+ xpos -116
+ ypos 1482
+}
+set N406eaba0 [stack 0]
+push $N406cf6b0
+Dot {
+ name Dot14
+ xpos 874
+ ypos 498
+}
+set N406ef450 [stack 0]
+Dot {
+ name Dot6
+ xpos 874
+ ypos 450
+}
+push $Nae815dc0
+push $Nae81a600
+Blur {
+ channels {{{parent.channels}}}
+ size 40
+ name Blur3
+ xpos 510
+ ypos 248
+}
+set N406f85d0 [stack 0]
+Merge2 {
+ inputs 2
+ operation divide
+ name MergeDiv
+ xpos 70
+ ypos 254
+}
+set N40585950 [stack 0]
+Expression {
+ inputs 1+1
+ expr2 "g>max(r,b) ? max (r,b):g"
+ name Expression1
+ tile_color 0x6aff55ff
+ xpos -40
+ ypos 447
+}
+push $N406ef450
+push $N40585950
+Expression {
+ inputs 1+1
+ expr2 "b>max(r,g) ? max (r,g):b"
+ name Expression2
+ tile_color 0x9fffff
+ xpos 70
+ ypos 495
+}
+Switch {
+ inputs 2
+ which {{parent.type}}
+ name GreenOrBlue
+ xpos 70
+ ypos 1143
+}
+set C405b0b10 [stack 0]
+push $N406d88a0
+push $N407d2730
+push $N40688de0
+push $N406bec30
+push $N406f85d0
+Dot {
+ name Dot364
+ xpos 654
+ ypos 258
+}
+Multiply {
+ value 0.72
+ name Multiply
+ xpos 620
+ ypos 320
+}
+Multiply {
+ inputs 1+1
+ name HIGH_Multiply
+ xpos 620
+ ypos 680
+}
+Multiply {
+ inputs 1+1
+ name MID_Multiply
+ xpos 620
+ ypos 752
+}
+Multiply {
+ inputs 1+1
+ name LOW_Multiply
+ xpos 620
+ ypos 824
+}
+Dot {
+ name Dot10
+ xpos 654
+ ypos 1098
+}
+set N405e9fd0 [stack 0]
+push $N406f85d0
+Copy {
+ inputs 2+1
+ from0 rgba.red
+ to0 rgba.green
+ mix {{parent.MIX}}
+ name Copy2
+ tile_color 0x55ff7fff
+ xpos 510
+ ypos 1352
+}
+push $N406d42d0
+push $N405e9fd0
+push $N406f85d0
+Copy {
+ inputs 2+1
+ from0 rgba.green
+ to0 rgba.blue
+ mix {{parent.MIX}}
+ name Copy
+ tile_color 0x557fffff
+ xpos 510
+ ypos 1136
+}
+clone $C405b0b10 {
+ inputs 2
+ xpos 180
+ ypos 1142
+ selected false
+}
+Merge2 {
+ inputs 2
+ operation multiply
+ name MergeMult
+ xpos 70
+ ypos 1358
+}
+set N40491d80 [stack 0]
+Copy {
+ inputs 2
+ from1 rgba.red
+ to1 rgba.red
+ from2 rgba.blue
+ to2 rgba.blue
+ name Copy3
+ tile_color 0x55ff7fff
+ xpos 180
+ ypos 1460
+}
+push $N406dd150
+push $N406eaba0
+push $N40491d80
+Copy {
+ inputs 2+1
+ from1 rgba.red
+ to1 rgba.red
+ from2 rgba.green
+ to2 rgba.green
+ name Copy1
+ tile_color 0x557fffff
+ xpos 70
+ ypos 1460
+}
+clone $C405b0b10 {
+ inputs 2
+ xpos 70
+ ypos 1575
+ selected false
+}
+EXPTool {
+ inputs 1+1
+ mode Stops
+ green {{red x1930 3.9}}
+ blue {{red x1930 4.2}}
+ name Exposure1
+ xpos 70
+ ypos 1623
+}
+EXPTool {
+ inputs 1+1
+ mode Stops
+ name Exposure_HIGH
+ xpos 70
+ ypos 1719
+}
+EXPTool {
+ inputs 1+1
+ mode Stops
+ name Exposure_MID
+ xpos 70
+ ypos 1766
+}
+EXPTool {
+ inputs 1+1
+ mode Stops
+ name Exposure_SHAD
+ xpos 70
+ ypos 1815
+}
+Crop {
+ box {0 0 {input.width} {input.height}}
+ name Crop
+ xpos 70
+ ypos 2007
+ disable {{!CropOutput}}
+}
+set N4037b3b0 [stack 0]
+Output {
+ name Output1
+ xpos 70
+ ypos 2150
+}
+push $N4037b3b0
+Viewer {
+ frame_range 1001-1036
+ viewerProcess "sRGB (default)"
+ name Viewer1
+ xpos 70
+ ypos 156
+}
+end_group
