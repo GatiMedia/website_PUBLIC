@@ -1,0 +1,198 @@
+Group {
+ name GM_Color_Flicker
+ tile_color 0xffbf00ff
+ addUserKnob {20 User l "Color Flicker"}
+ addUserKnob {26 wa_co l "<font color=yellow size=\"4\"><b>Wave Control</b></font>"}
+ addUserKnob {41 freq l "Wave Length " T proxy.freq}
+ addUserKnob {41 maxVal l Max T proxy.maxVal}
+ addUserKnob {41 minVal l Min T proxy.minVal}
+ addUserKnob {41 offset l Offset T proxy.offset}
+ addUserKnob {26 clamp l "<font color=yellow size=\"4\"><b>Clamp"}
+ addUserKnob {41 minimum l Minimum T Clamp_red.minimum}
+ addUserKnob {41 maximum l Maximum T Clamp_red.maximum}
+ addUserKnob {26 mix_4 l "<font color=yellow size=\"4\"><b>Mix "}
+ addUserKnob {41 mix_1 l "Red mix" T Copy_RED.mix}
+ addUserKnob {41 mix_2 l "Green Mix" T Copy_GREEN.mix}
+ addUserKnob {41 mix_3 l "Blue Mix" T Copy_BLUE.mix}
+ addUserKnob {41 which l Mix T Dissolve1.which}
+ addUserKnob {26 ""}
+ addUserKnob {22 tut1 l Tutorial T "import os\nimport sys\n\ntry:\n    import subprocess\n    def _run(cmd, shell, wait):\n        opener = subprocess.Popen(cmd, shell=shell)\n        if wait:\n            opener.wait()\n        return opener.pid\nexcept ImportError:\n    import popen2\n    def _run(cmd, shell, wait):\n        opener = popen2.Popen3(cmd)\n        if wait:\n            opener.wait()\n        return opener.pid\n\ndef _open(url, wait=0):\n    if sys.platform == \"darwin\":\n        cmd = \[\"open\", url]\n    elif hasattr(os, \"startfile\"):\n        return os.startfile(url)\n    elif os.environ.has_key(\"KDE_FULL_SESSION\") or os.environ.has_key(\"KDE_MULTIHEAD\") or \\\n        os.environ.has_key(\"GNOME_DESKTOP_SESSION_ID\") or os.environ.has_key(\"GNOME_KEYRING_SOCKET\"):\n        cmd = \[\"xdg-open\", url]\n    else:\n        raise OSError, \"Desktop not supported.\"\n\n    return _run(cmd, 0, wait)\n\n_open('https://www.gatimedia.co.uk/color-flicker')\n" +STARTLINE}
+ addUserKnob {26 ""}
+ addUserKnob {26 TEXT l "" +STARTLINE T "<font color=#808080 size=\"5\" >1.01 version</font>"}
+ addUserKnob {26 HeadlineB l "" +STARTLINE T "<font color=#808080 size=\"2\">GM_Color Flicker© by Attila Gasparetz</font>"}
+}
+ BackdropNode {
+  inputs 0
+  name BackdropNode7
+  tile_color 0x181818ff
+  label "<center><font color=red>\nRED\nrandom((frame+proxy.offset+1)/(proxy.freq)) * (proxy.maxVal-proxy.minVal) + proxy.minVal\n<font color=green>\nGREEN\nrandom((frame+proxy.offset+3)/(proxy.freq)) * (proxy.maxVal-proxy.minVal) + proxy.minVal\n<font color=blue>\nBLUE\nrandom((frame+proxy.offset+5)/(proxy.freq)) * (proxy.maxVal-proxy.minVal) + proxy.minVal"
+  note_font_size 42
+  xpos -328
+  ypos -113
+  bdwidth 1537
+  bdheight 658
+ }
+ Input {
+  inputs 0
+  name Mask
+  xpos -1470
+  ypos 135
+  number 1
+ }
+ Input {
+  inputs 0
+  name Input
+  xpos -1030
+  ypos -57
+ }
+ Dot {
+  name Dot1
+  xpos -996
+  ypos 66
+ }
+set N2fc5c00 [stack 0]
+ Expression {
+  channel3 alpha
+  expr3 1
+  name Expression
+  xpos -1250
+  ypos 63
+ }
+ ChannelMerge {
+  inputs 2
+  operation multiply
+  name ChannelMerge
+  tile_color 0xff
+  xpos -1250
+  ypos 123
+  disable {{"!\[exists parent.input1]"}}
+ }
+set N2fc5180 [stack 0]
+ Dot {
+  name Dot2
+  tile_color 0x949494ff
+  note_font_size 22
+  note_font_color 0xffffffff
+  xpos -1216
+  ypos 378
+ }
+push $N2fc5180
+push $N2fc5c00
+ Dot {
+  name Dot3
+  xpos -666
+  ypos 66
+ }
+set N2fc4a80 [stack 0]
+ Grade {
+  multiply {{"random((frame+proxy.offset+5)/(proxy.freq)) * (proxy.maxVal-proxy.minVal) + proxy.minVal"}}
+  name Grade_B
+  xpos -700
+  ypos 279
+ }
+ Clamp {
+  channels rgb
+  minimum {{Clamp_red.minimum}}
+  maximum {{Clamp_red.maximum}}
+  mix {{Grade_RED.mix}}
+  name Clamp_blue
+  tile_color 0x777777ff
+  xpos -920
+  ypos 279
+ }
+push $N2fc5180
+push $N2fc4a80
+ Grade {
+  multiply {{"random((frame+proxy.offset+3)/(proxy.freq)) * (proxy.maxVal-proxy.minVal) + proxy.minVal\n"}}
+  name Grade_G
+  xpos -700
+  ypos 207
+ }
+ Clamp {
+  channels rgb
+  minimum {{Clamp_red.minimum}}
+  maximum {{Clamp_red.maximum}}
+  mix {{Grade_RED.mix}}
+  name Clamp_green
+  tile_color 0x777777ff
+  xpos -920
+  ypos 207
+ }
+push $N2fc5180
+push $N2fc4a80
+ Grade {
+  multiply {{"random((frame+proxy.offset+1)/(proxy.freq)) * (proxy.maxVal-proxy.minVal) + proxy.minVal\n"}}
+  name Grade_R
+  xpos -700
+  ypos 135
+ }
+ Clamp {
+  channels rgb
+  mix {{Grade_RED.mix}}
+  name Clamp_red
+  tile_color 0x777777ff
+  xpos -920
+  ypos 135
+ }
+push $N2fc5c00
+ Copy {
+  inputs 2+1
+  from0 rgba.red
+  to0 rgba.red
+  name Copy_RED
+  tile_color 0xff0000ff
+  xpos -1030
+  ypos 129
+  disable {{"!\[exists parent.input0]"}}
+ }
+ Copy {
+  inputs 2+1
+  from0 rgba.green
+  to0 rgba.green
+  name Copy_GREEN
+  tile_color 0x1fff00ff
+  xpos -1030
+  ypos 201
+  disable {{"!\[exists parent.input0]"}}
+ }
+ Copy {
+  inputs 2+1
+  from0 rgba.blue
+  to0 rgba.blue
+  name Copy_BLUE
+  tile_color 0x3fffff
+  xpos -1030
+  ypos 273
+  disable {{"!\[exists parent.input0]"}}
+ }
+push $N2fc5c00
+ Dissolve {
+  inputs 2+1
+  which 1
+  name Dissolve1
+  label "Which: \[value which]"
+  xpos -1030
+  ypos 363
+ }
+ Output {
+  name Output1
+  xpos -1030
+  ypos 543
+ }
+ NoOp {
+  inputs 0
+  name proxy
+  tile_color 0xff
+  selected true
+  xpos -480
+  ypos 207
+  addUserKnob {20 User}
+  addUserKnob {7 freq l Frequency R 0 10}
+  freq 2
+  addUserKnob {7 offset l Offset R 0 100}
+  addUserKnob {7 maxVal l Max R 0 20}
+  maxVal 3
+  addUserKnob {7 minVal l Min R 0 20}
+  minVal 1
+ }
+end_group
