@@ -3,7 +3,7 @@ def oldTextFinder():
     if nuke.allNodes('Text'):
         for node in nuke.allNodes():
             node.setSelected(False)
-        for node in nuke.allNodes():
+        for node in nuke.allNodes(recurseGroups=True):
             if node.Class() == "Text":
                 try:
                     node.setSelected(True)
