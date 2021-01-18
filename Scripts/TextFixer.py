@@ -50,7 +50,7 @@ def OldText2NewText():
             oldText_maskChannelInput = oldText["maskChannelInput"].value()
             oldText_inject = oldText["inject"].value()
             oldText_invert_mask = oldText["invert_mask"].value()
-            oldText_message = oldText["message"].value()
+            oldText_message = oldText["message"].toScript()
             #size - font_size
             oldText_size = oldText["size"].value()
             #kerning - tracking
