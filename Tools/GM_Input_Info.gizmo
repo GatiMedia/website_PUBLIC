@@ -2,8 +2,8 @@ Group {
  name GM_Input_Info1
  tile_color 0xff9455ff
  selected true
- xpos 7707
- ypos 62
+ xpos 7739
+ ypos -82
  addUserKnob {20 User}
  addUserKnob {41 text_pos l "Text Position" T proxy.text_pos}
  addUserKnob {26 ""}
@@ -83,13 +83,13 @@ Group {
   xpos 214
   ypos -606
  }
-set N86a41b10 [stack 0]
+set N8a7979e0 [stack 0]
  Dot {
   name Dot1
   xpos 214
   ypos -486
  }
-set N86a3fff0 [stack 0]
+set N8a797600 [stack 0]
  Shuffle {
   red black
   green black
@@ -100,61 +100,61 @@ set N86a3fff0 [stack 0]
   xpos 400
   ypos -496
  }
-set N86a3f070 [stack 0]
+set N8a7981a0 [stack 0]
  Dot {
   name Dot2
   xpos 874
   ypos -486
  }
-set N86a422d0 [stack 0]
+set N8a797dc0 [stack 0]
  Dot {
   name Dot3
   xpos 1094
   ypos -486
  }
-set N86a46c70 [stack 0]
+set N9086e880 [stack 0]
  Dot {
   name Dot4
   xpos 1314
   ypos -486
  }
-set N86a407b0 [stack 0]
+set N9086f040 [stack 0]
  Dot {
   name Dot9
   xpos 1534
   ypos -486
  }
-set N86a426b0 [stack 0]
+set N9086ec60 [stack 0]
  Dot {
   name Dot7
   xpos 1754
   ypos -486
  }
-set N86a44990 [stack 0]
+set N9086f420 [stack 0]
  Dot {
   name Dot5
   xpos 1974
   ypos -486
  }
-set N86a40f70 [stack 0]
+set Na07f2fe0 [stack 0]
  Dot {
   name Dot6
   xpos 2194
   ypos -486
  }
-set N86a3f450 [stack 0]
+set Na07f33c0 [stack 0]
  Dot {
   name Dot14
   xpos 2414
   ypos -486
  }
-set N86a42e70 [stack 0]
+set Na07f2060 [stack 0]
  Dot {
   name Dot15
   xpos 2634
   ypos -486
  }
-set N86a47050 [stack 0]
+set Na07f2440 [stack 0]
  Dot {
   name Dot16
   xpos 2854
@@ -201,7 +201,7 @@ set N86a47050 [stack 0]
   ypos -394
   disable {{parent.colorspace==0 x1018 1}}
  }
-push $N86a47050
+push $Na07f2440
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
@@ -243,7 +243,7 @@ push $N86a47050
   ypos -394
   disable {{parent.format_name==0}}
  }
-push $N86a42e70
+push $Na07f2060
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
@@ -284,7 +284,7 @@ push $N86a42e70
   xpos 2380
   ypos -394
  }
-push $N86a3f450
+push $Na07f33c0
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
@@ -325,7 +325,7 @@ push $N86a3f450
   xpos 2160
   ypos -394
  }
-push $N86a40f70
+push $Na07f2fe0
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
@@ -366,7 +366,7 @@ push $N86a40f70
   xpos 1940
   ypos -394
  }
-push $N86a44990
+push $N9086f420
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
@@ -407,7 +407,7 @@ push $N86a44990
   xpos 1720
   ypos -394
  }
-push $N86a426b0
+push $N9086ec60
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
@@ -448,7 +448,7 @@ push $N86a426b0
   xpos 1500
   ypos -394
  }
-push $N86a407b0
+push $N9086f040
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
@@ -490,7 +490,7 @@ push $N86a407b0
   ypos -394
  }
 push 0
-push $N86a46c70
+push $N9086e880
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
@@ -530,7 +530,7 @@ push $N86a46c70
   xpos 1060
   ypos -394
  }
-push $N86a422d0
+push $N8a797dc0
  Text2 {
   font_size_toolbar 100
   font_width_toolbar 100
@@ -585,7 +585,7 @@ push $N86a422d0
   xpos 840
   ypos -10
  }
-set N86a483b0 [stack 0]
+set N906ad970 [stack 0]
  Constant {
   inputs 0
   channels rgb
@@ -615,7 +615,7 @@ set N86a483b0 [stack 0]
   xpos 840
   ypos 926
  }
-push $N86a483b0
+push $N906ad970
  Dot {
   name Dot10
   xpos 764
@@ -634,7 +634,7 @@ push $N86a483b0
   xpos 730
   ypos 320
  }
-push $N86a483b0
+push $N906ad970
  Dot {
   name Dot11
   xpos 1314
@@ -694,7 +694,7 @@ push $N86a483b0
   xpos 730
   ypos 422
  }
-push $N86a3f070
+push $N8a7981a0
  Merge2 {
   inputs 2
   name Merge_shadow
@@ -714,14 +714,14 @@ push $N86a3f070
   xpos 400
   ypos 974
  }
-set N8a4a4a40 [stack 0]
-push $N86a3fff0
+set N999d80a0 [stack 0]
+push $N8a797600
  Dot {
   name Dot12
   xpos 214
   ypos 762
  }
-set N8a4a2380 [stack 0]
+set N999d8860 [stack 0]
  Dot {
   name Dot13
   xpos -6
@@ -734,7 +734,7 @@ set N8a4a2380 [stack 0]
   xpos -40
   ypos 974
  }
-push $N8a4a4a40
+push $N999d80a0
  Shuffle {
   alpha black
   name Shuffle2
@@ -750,9 +750,9 @@ push $N8a4a4a40
   xpos 70
   ypos 1136
  }
-push $N8a4a4a40
-push $N8a4a4a40
-push $N8a4a2380
+push $N999d80a0
+push $N999d80a0
+push $N999d8860
  Merge2 {
   inputs 2
   name Merge_all
@@ -772,10 +772,10 @@ push $N8a4a2380
   which {{parent.no_alpha}}
   name Switch_na_alpha2
   label "\[value which]"
+  selected true
   xpos 180
   ypos 1280
  }
-set N87133190 [stack 0]
  Shuffle {
   red black
   green black
@@ -792,7 +792,7 @@ set N87133190 [stack 0]
   xpos 180
   ypos 1574
  }
-push $N86a41b10
+push $N8a7979e0
  Crop {
   box {{input.format.x} {input.format.y} {input.format.r} {input.format.t}}
   name Crop_proxy
@@ -809,13 +809,5 @@ push $N86a41b10
   gap {{-parent.spacing}}
   addUserKnob {4 text_pos l "Text Position" M {"Top Left" "Top Right" "Bottom Left" "Bottom Right"}}
   text_pos "Top Right"
- }
-push $N87133190
- Viewer {
-  frame_range 1001-1100
-  monitorOutOutputTransform rec709
-  name Viewer1
-  xpos 2916
-  ypos -232
  }
 end_group
